@@ -1,3 +1,10 @@
+<!--
+@Author: Matthew Ge <geyuanjun>
+@Date:   2017-01-14 21:31:45
+@Email:  geyuanjun.sh@superjia.com
+@Last modified by:   geyuanjun
+@Last modified time: 2017-01-14 22:14:38
+-->
 
 # 全栈JS工程师的崛起
 
@@ -33,7 +40,7 @@ NodeJS的崛起开辟了一个新的时代，一个Javascript工程师不仅仅�
 
 那是因为技术栈总是在不断变化发展。 我们尝试解决的问题也变得越来越复杂。自然而然 ，我们开发中使用到的技术栈也随之变多了。
 
-几年前，学习`JavaScript`只意味着学习经典的ES3. 如今如果谁要从头开始学`JavaScript`，那他不得不同时学习`ES3`和`ES2015（ES6）`。
+几年前，学习 JavaScript 只意味着学习经典的ES3。如今如果谁要从头开始学 JavaScript，那他不得不同时学习 ES3 和 ES2015（ES6）。
 
 学习最新最酷的语言特性不能免去你学习最基本的知识的环节。
 
@@ -53,11 +60,11 @@ NodeJS的崛起开辟了一个新的时代，一个Javascript工程师不仅仅�
 
 一个是你选择的、你喜爱的、你充满热情的技术栈。
 
-另外一个，就是`JavaScript`。
+另外一个，就是 JavaScript。
 
 > 为什么有些人那么反感JavaScript，部分原因是JavaScript选择了他们，而不是他们选择了JavaScript。对此，他们无能为力。
 
-当网页开发者不想用那些<font color=red>满是坑</font>的插件去写前端代码时，他们不得不用JavaScript。
+当网页开发者不想用那些满是坑的插件去写前端代码时，他们不得不用JavaScript。
 
 一些人甚至尝试过去创造一个新的语言，唯一目的就是为了取代JavaScript。但这些语言编译成JavaScript后，其最终结果往往不像它的开发者当初想象地那样完美。
 
@@ -81,25 +88,25 @@ CoffeeScript就是其中之一，但我不会去具体说它。 目前71%的开�
 
 > 要是，你选择了它而不是被逼迫着使用它呢?
 
-如果你选择了Node.js作为你后端的语言，你将会体会到一些其他技术栈不能带来的独特的优势，那就是你能一直使用`JavaScript`。
+如果你选择了Node.js作为你后端的语言，你将会体会到一些其他技术栈不能带来的独特的优势，那就是你能一直使用 JavaScript 。
 
 你将不需要搞清楚Lodash在Ruby或者Python中相当于什么，你用就行了。
 
-你可以从`pip install`或者`bundle install`开始尝试使用`Node.js`，但是你仍然需要处理你的JavaScript依赖。
+你可以通过`pip install`或者`bundle install`开始尝试使用`Node.js`，但是你仍然需要处理你的JavaScript依赖。
 
 如果你选择了`Node.js`， 只要`npm install`，你就可以搞定客户端和服务端的所有东西。
 
 ![image](https://i1.wp.com/thefullstack.xyz/wp-content/uploads/2016/05/13fcit.jpg?resize=500%2C355)
 
-代码复用程度将飙升。就算你的代码发生了[left-pad](https://www.zhihu.com/question/41694868)(译者注：大名鼎鼎的`left-pad`事件，大家都还记得吧？)，你也只需要用一种语言，自己写一次，就可以完美搞定！
+代码复用程度将飙升。就算你的代码发生了[“left-pad”](https://www.zhihu.com/question/41694868)(译者注：大名鼎鼎的`left-pad`事件，大家都还记得吧？)，你也只需要用一种语言，自己写一次，就可以完美搞定！
 
 如果你走的是JavaScript“大一统”路线，你可以无缝开发一个同时能在浏览器和服务端渲染的web应用。
 
-如你所见，选择`JavaScript`全栈有巨大的好处。很多时候，你会发现你自己从事客户端的开发，同时也获取了适用于服务端的知识。反之亦然。
+如你所见，选择 JavaScript 全栈有巨大的好处。很多时候，你会发现你自己从事客户端的开发，同时也获取了适用于服务端的知识。反之亦然。
 
 全栈JavaScript工程师的世界会比其他的全栈工程师轻松很多。但要想成为全栈，不论是客户端还是服务端，需要大量的专业领域知识。
 
-利用`JavaScript`，可以分别进行Node.js开发和浏览器开发。
+利用 JavaScript，可以分别进行Node.js开发和浏览器开发。
 
 但写跑在浏览器的前端代码和跑在服务器的后端代码仍然是两种截然不同的事情。
 
@@ -135,7 +142,7 @@ CoffeeScript就是其中之一，但我不会去具体说它。 目前71%的开�
 
 ## 全栈JavaScript工程师的乐趣
 
-最近`StackOverflow`的一个调查显示，大多数工程师把自己定义为全栈工程师。调查也显示85.3%的工程师至少知道一些`JavaScript`。
+最近`StackOverflow`的一个调查显示，大多数工程师把自己定义为全栈工程师。调查也显示85.3%的工程师至少知道一些 JavaScript 。
 
 但是，为什么成为一个全栈工程师会如此流行呢？
 
