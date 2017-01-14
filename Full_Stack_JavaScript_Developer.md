@@ -1,6 +1,8 @@
 #全栈JS工程师的崛起
 
-###原文地址： http://thefullstack.xyz/full-stack-javascript-developer/ 
+### [原文地址](http://thefullstack.xyz/full-stack-javascript-developer/)
+
+翻译：野草  校对：墨白
 
 Javascript无处不在。
 
