@@ -1,10 +1,3 @@
-<!--
-@Author: Matthew Ge <geyuanjun>
-@Date:   2017-01-14 19:01:53
-@Email:  geyuanjun.sh@superjia.com
-@Last modified by:   geyuanjun
-@Last modified time: 2017-01-14 20:38:23
--->
 
 # 全栈JS工程师的崛起
 
@@ -98,7 +91,7 @@ CoffeeScript就是其中之一，但我不会去具体说它。 目前71%的开�
 
 ![image](https://i1.wp.com/thefullstack.xyz/wp-content/uploads/2016/05/13fcit.jpg?resize=500%2C355)
 
-代码复用程度将飙升。就算你的代码发生了`left-padding`(译者注：大名鼎鼎的`left-padding`事件，大家都还记得吧？)，你也只需要用一种语言，自己写一次，就可以完美搞定！
+代码复用程度将飙升。就算你的代码发生了[left-pad](https://www.zhihu.com/question/41694868)(译者注：大名鼎鼎的`left-pad`事件，大家都还记得吧？)，你也只需要用一种语言，自己写一次，就可以完美搞定！
 
 如果你走的是JavaScript“大一统”路线，你可以无缝开发一个同时能在浏览器和服务端渲染的web应用。
 
@@ -130,7 +123,7 @@ CoffeeScript就是其中之一，但我不会去具体说它。 目前71%的开�
 
 这是为什么我要抛出我的拙见`70/30准则`：
 
-> 如果在一年中可以自由安排时间提升自己技术栈，你要试图将70%的时间花费在你擅长的领域，而剩余的30%搞点其他的花样。
+> 如果在一年中可以自由安排时间完成某一件事情，你要试图将70%的时间花费在你擅长的领域，而剩余的30%搞点其他的花样。
 
 可能你现在工作的公司并不提倡全栈。比如，如果你发现自己只能做后端相关的东西，那你为什么不自己开发一个前端的JavaScript小项目呢？
 
