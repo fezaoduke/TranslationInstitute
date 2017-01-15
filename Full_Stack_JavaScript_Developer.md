@@ -3,7 +3,7 @@
 @Date:   2017-01-14 21:31:45
 @Email:  geyuanjun.sh@superjia.com
 @Last modified by:   geyuanjun
-@Last modified time: 2017-01-14 22:14:38
+@Last modified time: 2017-01-15 22:00:30
 -->
 
 # 全栈JS工程师的崛起
@@ -48,7 +48,7 @@ NodeJS的崛起开辟了一个新的时代，一个Javascript工程师不仅仅�
 
 每个开发技术栈都有自己的一片小天地。
 
-每个语言有自己的开发框架，比如`Python`有`Django`，`Ruby`有`Ruby on Rails`。
+每个语言有自己的开发框架，比如Python有Django，Ruby有Ruby on Rails。
 
 而且，每个技术栈都有自己的包管理器，功能库，以及一些独一无二的语言结构。它们背后都有一群热情的追随者，从博主，专业开发者，到开源代码贡献者。
 
@@ -92,13 +92,13 @@ CoffeeScript就是其中之一，但我不会去具体说它。 目前71%的开�
 
 你将不需要搞清楚Lodash在Ruby或者Python中相当于什么，你用就行了。
 
-用`pip install`或者`bundle install`你可能用得还挺得心应手的，但是你仍然需要处理JavaScript的依赖。
+用pip install或者bundle install你可能用得还挺得心应手的，但是你仍然需要处理JavaScript的依赖。
 
-如果你选择了`Node.js`， 只要`npm install`，你就可以搞定客户端和服务端的所有东西。
+如果你选择了Node.js， 只要npm install，你就可以搞定客户端和服务端的所有东西。
 
 ![image](https://i1.wp.com/thefullstack.xyz/wp-content/uploads/2016/05/13fcit.jpg?resize=500%2C355)
 
-代码复用程度将飙升。就算你的代码发生了[“left-pad”](https://www.zhihu.com/question/41694868)(译者注：大名鼎鼎的`left-pad`事件，大家都还记得吧？)，你也只需要用一种语言，自己写一次，就可以完美搞定！
+代码复用程度将飙升。就算你的代码发生了[“left-pad”](https://www.zhihu.com/question/41694868)(译者注：大名鼎鼎的left-pad事件，大家都还记得吧？)，你也只需要用一种语言，自己写一次，就可以完美搞定！
 
 如果你走的是JavaScript“大一统”路线，你可以无缝开发一个同时能在浏览器和服务端渲染的web应用。
 
@@ -128,7 +128,7 @@ CoffeeScript就是其中之一，但我不会去具体说它。 目前71%的开�
 
 你要意识到精通前端并没有让你离后端更远。 这仅仅意味着你更倾向于前端方向。
 
-这是为什么我要抛出我的拙见`70/30准则`：
+这是为什么我要抛出我的拙见70/30准则：
 
 > 如果给你一年的时间去实现一些功能，技术栈可以有所选择，你要试图将70%的时间花费在你擅长的领域，而剩余的30%搞点其他的花样。
 
@@ -142,7 +142,7 @@ CoffeeScript就是其中之一，但我不会去具体说它。 目前71%的开�
 
 ## 全栈JavaScript工程师的乐趣
 
-最近`StackOverflow`的一个调查显示，大多数工程师把自己定义为全栈工程师。调查也显示85.3%的工程师至少知道一些 JavaScript 。
+最近StackOverflow的一个调查显示，大多数工程师把自己定义为全栈工程师。调查也显示85.3%的工程师至少知道一些 JavaScript 。
 
 但是，为什么成为一个全栈工程师会如此流行呢？
 
