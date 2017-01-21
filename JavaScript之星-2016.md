@@ -23,7 +23,7 @@ JavasScript社区在创新的道路上开足了马力，曾经流行过的也许
 
 这彰显了2016年JavaScript应用的全面性以及多功能性。
 
-##### 2016年的王者是...
+##### 2016年的王者是······
 Vue.JS在去年获得了超过25000个star，这意味着每天有72个star，超过了包含React以及Angular在内的其它任何框架。
 
 Vue.JS在10月发布了2.0版本，这一版本为了更好的表现加入了Virtual DOM渲染方式。
@@ -124,7 +124,46 @@ Next.js，由来自Zeit忙碌的开发者所创建，拥有服务端渲染特性
 这代表应用不管是在客户端还是服务端都基本上可以运行同一套代码。
 
 ### 5. Mobile
+JavaScript无处不在，现在你都可以使用web开发者的技术（HTML，JavaScript，CSS）来创建移动端应用。
 
+##### React Native
+利用React Native，基于相同的代码以及React开发者熟悉的理念方法，你可以构建iOS和Android不同平台的移动端应用。
+想要了解更多关于构建iOS以及Andriod平台应用的知识，请移步官方教程。
+
+其它的解决方案，基于Cordova，常常依赖于Webview去渲染页面，但并没有原生流畅。“Write Once Run Everywhere···”开发者们的梦想终于成真啦！
+
+##### Ionic
+Ionic是“hybrid”应用概念的先锋。在其外表之下，它基于Cordova来获取移动设备的各种特性。它非常成熟，拥有一个庞大的生态系统。
+
+##### NativeScript
+NativeScript与React Native目的（利用web技术开发真正的移动端应用）相同。它有两种形式，NativeScript Core以及NativeScript + Angular 2
+
+以及······
+
+2017年有一项快完成的项目：Weex，一个基于Vue.JS的跨平台移动端UI框架。
+
+### 6. 编译器
+我们现在这里讨论的编译器（或者“转换器”）是指其将其他语言（或者JavaScript的超集）转换JavaScript。它们将代码转换成“标准JavaScript”代码，即浏览器（或者node.js）可以执行的代码。
+
+举个例子，编译器使开发者可以使用最新版本的JavaScript（ES6）而不需要担心浏览器兼容问题。
+
+##### TypeScript
+引领潮流的转换器是TypeScript，它为web开发者带来了Java以及C#开发者所使用的静态类型。Angular 2 正是基于TypeScript增加了许多的特性（traction）。
+这里也存在在JavaScript中使用类型的优势与劣势，你可以读下面的两篇文章来思考自己的观点。
+- [You Might Not Need TypeScript](https://medium.com/javascript-scene/you-might-not-need-typescript-or-static-types-aa7cb670a77b#.1pn05vlis)
+- [TypeScript:the missing introduction](https://toddmotto.com/typescript-the-missing-introduction)
+
+##### Babel
+Babel，同Webpack，已经基本上成为一个的标准工具，用来编译ES6代码以及使用类似React（JSX）类库的模板。
+最初，它只是用来编译ES6，现在已经成为一个用来做代码转换的更加通用的工具，感谢那一大批插件。
+
+##### Flow
+Flow并不是一个编译器，它只是一个静态类型检测工具，用来“标注”JavaScript代码。基本上，在代码中使用Flow只是增加对于意料中类型的注释（[这里](http://javascriptplayground.com/blog/2017/01/npm-flowjs-javascript/)阅读更多关于使用Flow去写模块）
+
+它被使用在Faceboook项目的代码中。自从Facebook成为开源世界（开源项目例如React，React Native，Flux， Immutable，Jest···）的主角之一，这里面有太多的意义了。
+
+##### CoffeeScript
+在过去几年中，基于Python以及Ruby语法的CoffeeScript以及它精妙的语法成为最流行的编译器，但在2016，它不再那么流行，很多开发者由CoffeeScript转向搭配Babel的ES6。
 
 
 
