@@ -202,6 +202,14 @@ Jest，又一个Facebook项目，在上个星期获得了很多的关注。在Re
 Jest拥有很好的内置Mock数据能力，而其它的测试框架需要依赖类似于Sinon.js这样的类库。
 
 ### 9. IDE
+关于IDE（整合开发环境），不得不提2个最受欢迎的利用web技术开发的开源IDE。
+
+##### Visual Stdio Code
+在我们的统计结果中，微软引领了Visual Stdio Code的开发工作。
+
+它很好的整合了TypeScript以及node.js。一些开发者提到了开发速度的提升，这得感谢“IntelliSence”特性（整合了高亮以及自动补全）
+
+提到“开源”和“微软”，再也不是矛盾的啦！
 
 
 
