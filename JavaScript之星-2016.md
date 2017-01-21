@@ -66,3 +66,39 @@ So it seems that, rather than opting for full frameworks with all features "out 
 因此，看起来，相比于封装好的包含所有特性的全能型框架，2016年的开发者们更青睐轻量型框架，并且更愿意自定义解决方案，自己“点菜”。
 
 ### 3. Node.js 框架
+在2016，从未如此简单去创建以及部署一个node.js应用，只需要通过：
+- Now
+- Webtask.io
+- Stdlib
+
+类似于 Gomix 的工程项目更是降低了进入 node.js 世界的门槛，它使任何人只需要通过一些点击操作就能够直接在浏览器编写以及分享 node.js 代码。
+
+那么，如果你不得不写一个web应用，你会选择哪一个框架？
+
+##### Express
+当你想用 node.js 写一个web应用的时候，Express 经常会被认为web服务器的选择之一。大多数 node.js 开发者对于它的设计哲学（核心很小，但可以通过各种中间件进行拓展）非常熟悉。
+
+##### Koa
+Koa的设计哲学与 Express 类似，只不过它使用了 ES6 中的 generators 来避免回调地狱问题。
+
+##### Feathers
+对于以“服务端导向”架构设计，Feathers是一个非常灵活的解决方案，很适合用来构建小的 node.js 服务。
+
+##### Nodal
+Nodal框架立志于解决连接到PostgreSQL数据库的无状态以及分布服务问题。
+
+##### Keystone
+Keystone是最好的MongoDB数据管理以及运行终端解决方案之一，它主要是用来处理从MongoDB数据库传来的内容。
+管理界面是直接从模型里面生成的，拥有所有的CRUD操作以及很好的过滤功能。
+
+##### Sails
+Sails是一个完全的MVC框架，灵感来源于Ruby on Rails（所以把它命名为**S**ails！）。它已经发布了挺长一段时间了，兼容各种版本的数据库，SQL或者no-SQL。
+
+##### Loopback
+Loopback是另一个拥有很多特性的成熟框架，其中包括需要token验证的权限以及兼容任何数据库。
+
+最牛逼的特性是其API探测功能。这个特性让开发者以直观的方式检测所有的API端点，在此过程中，开发者还可以去检测所有用户的token。
+如果你想要去开发一个新的API，它回事很好的选择。
+
+### 4. React样板 
+
