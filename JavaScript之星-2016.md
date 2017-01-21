@@ -211,5 +211,9 @@ Jest拥有很好的内置Mock数据能力，而其它的测试框架需要依赖
 
 提到“开源”和“微软”，再也不是矛盾的啦！
 
+##### Atom
+Atom，由Github主推，利用Electron创建（类似于其它的桌面应用，包括桌面客户端），其并不输于Visual Stdio Code太多。
+关于Atom，有一个有趣的事情：它主要的编写语言是CoffeeScript！
+
 
 
