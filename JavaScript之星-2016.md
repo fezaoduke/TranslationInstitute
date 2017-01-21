@@ -1,3 +1,5 @@
+原文链接：https://risingstars2016.js.org/?utm_source=javascriptweekly&utm_medium=email
+
 JavasScript社区在创新的道路上开足了马力，曾经流行过的也许一个月之后就过时了。
 
 2016已经结束了。你可能会想你是否错过一些重要的东西？不用担心，我们正在回顾那些流行趋势。
