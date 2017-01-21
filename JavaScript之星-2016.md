@@ -165,5 +165,30 @@ Flow并不是一个编译器，它只是一个静态类型检测工具，用来�
 ##### CoffeeScript
 在过去几年中，基于Python以及Ruby语法的CoffeeScript以及它精妙的语法成为最流行的编译器，但在2016，它不再那么流行，很多开发者由CoffeeScript转向搭配Babel的ES6。
 
+### 7. 构建工具
+在2016，很难想象一个web应用没有经过任何构建过程。你经常需要通过构建来转换模板以及优化资源，保证你的web应用在生产环境正常运行。
+
+##### Wepack
+Webpack是用来构建单页应用的主要工具，它与React生态良好兼容。最新发布的版本2增加一些先前期望的功能（可通过[这篇介绍](https://blog.madewithenvy.com/getting-started-with-webpack-2-ed2b86c68783#.7wyiawc0o)查看）
+
+##### Gulp
+Gulp是一个通用任务运行器，可以用来处理任何形式的自动化过程包括文件系统，所以，它并不是Webpack或者Browserify的直接竞争对手。
+
+类似于Grunt，Gulp通过整合任务的方式工作：你可以让它压缩合并一系列的资源但它跟Webpack以及Browserify不同，并不处理模块化的JavaSript代码。
+
+但它可以与Webpack很好的兼容，即使开发更愿意去使用npm scripts代替它。
+
+### Browserify
+Browserify，由于其简便性，很多node.js开发者喜欢它。
+
+大体上，它会利用几个node.js包来生成一个简单的构建后的文件作为输出。但看起来，一个类似Webpack这种自主配置更强的工具更适用于web应用开发工作。
+
+以及······
+
+2017年一个模块化处理工具正在崛起，它更强调性能问题，那就是rollup。
+
+它使用了具有被称作“Tree shaking”的特性ES6模块来创建bundle，里面只有在你代码中使用的函数，而不是一整个类库。
+
+
 
 
