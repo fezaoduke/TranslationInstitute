@@ -241,6 +241,28 @@ SSG非常流行，因为有很多种好的方法能够免费去建立网站：
 你可以选择与React组件、markdown文件以及服务端渲染整合，这使得它非常强大。
 
 ### 结论
+尽管JavaScript疲劳以及各种戏剧性的事件（还记得“left-pad”门吧？），2016年社区发展良好，Vue.JS以及
+React Native爆发，Yarn以及 Create React App新军突起。
+
+我们已经讨论了2016年Github上面引领风尚的项目，但真正重要的是开发者的满意程度。所以，如果你想要更多干货，
+去查一下Sacha Greif的JavaScript现状调查吧，收集了超过9000个回复！
+
+----------
+
+是时候来想想2017了，下一个JavaScript之星是谁？
+
+这里是我挑选的10个项目，在2016年我很喜欢这些项目以及想法，2017年它们仍将蓬勃发展：
+- Vue.JS：永不停歇
+- Electron
+- Create React App（用来创建页面）
+- React Native
+- Gatsby
+- Yarn：一个快速、可信赖的安全依赖包，可替代npm，可以[在这儿](https://blog.risingstack.com/yarn-vs-npm-node-js-package-managers/)
+查阅node.js包管理工具的状态
+- “渐进式网页应用”概念
+- Node.js的“微服务”解决方案，能够更好实现部署，例如Now
+- Node.js的升级：最新一版已经实现对ES6语法很好的支持
+- 最后一个就是GraphQL：我所有的朋友都告诉我，将有大事发生！
 
 
 
