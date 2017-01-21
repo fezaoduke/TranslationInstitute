@@ -189,6 +189,19 @@ Browserify，由于其简便性，很多node.js开发者喜欢它。
 
 它使用了具有被称作“Tree shaking”的特性ES6模块来创建bundle，里面只有在你代码中使用的函数，而不是一整个类库。
 
+### 8. 测试框架
+两个著名的测试框架使Jasmine以及 Mocha，但在2016，2个发布不久的项目吸引了很大的关注：AVA和Jest。
+
+##### AVA
+AVA，由多产的Sindre Sorhus创建，主要关注于性能（平行测试）以及ES6。AVA的语法与标准测试框架，例如Tape和Node-tap，相似。
+
+##### Jest
+Jest，又一个Facebook项目，在上个星期获得了很多的关注。在React社区，它很出名，越来越多的人开始向Jest迁移（看[这个故事](https://medium.com/@kentcdodds/migrating-to-jest-881f75366e7e#.z9x53j1ea)），
+在2017年，它有可能成为最流行的测试框架。
+
+Jest拥有很好的内置Mock数据能力，而其它的测试框架需要依赖类似于Sinon.js这样的类库。
+
+### 9. IDE
 
 
 
