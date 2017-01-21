@@ -158,9 +158,11 @@ Babel，同Webpack，已经基本上成为一个的标准工具，用来编译ES
 最初，它只是用来编译ES6，现在已经成为一个用来做代码转换的更加通用的工具，感谢那一大批插件。
 
 ##### Flow
-Flow并不是一个编译器，它只是一个静态类型检测工具，用来“标注”JavaScript代码。基本上，在代码中使用Flow只是增加对于意料中类型的注释（[这里](http://javascriptplayground.com/blog/2017/01/npm-flowjs-javascript/)阅读更多关于使用Flow去写模块）
+Flow并不是一个编译器，它只是一个静态类型检测工具，用来“标注”JavaScript代码。基本上，在代码中使用Flow只是增加对于意料中类型的注释
+（[这里](http://javascriptplayground.com/blog/2017/01/npm-flowjs-javascript/)阅读更多关于使用Flow去写模块）
 
-它被使用在Faceboook项目的代码中。自从Facebook成为开源世界（开源项目例如React，React Native，Flux， Immutable，Jest···）的主角之一，这里面有太多的意义了。
+它被使用在Faceboook项目的代码中。自从Facebook成为开源世界（开源项目例如React，React Native，Flux， Immutable，Jest···）的主角之一，
+这里面有太多的意义了。
 
 ##### CoffeeScript
 在过去几年中，基于Python以及Ruby语法的CoffeeScript以及它精妙的语法成为最流行的编译器，但在2016，它不再那么流行，很多开发者由CoffeeScript转向搭配Babel的ES6。
@@ -214,6 +216,31 @@ Jest拥有很好的内置Mock数据能力，而其它的测试框架需要依赖
 ##### Atom
 Atom，由Github主推，利用Electron创建（类似于其它的桌面应用，包括桌面客户端），其并不输于Visual Stdio Code太多。
 关于Atom，有一个有趣的事情：它主要的编写语言是CoffeeScript！
+
+### 10. 静态网页生成器
+静态网页生成器（或者被称为“SSG”）用来生成一系列html，css以及JavaScript文件的工具。你可以将这些文件部署在一个简单的web服务器上面（Apache或者NGNX），
+不需要感到惊奇或者设置一个数据库或者使用任何的web框架。正如Gatsby网站这么说：
+
+> build sites like it's 1995
+
+静态网页很快，很强大并且很容易去维护。
+
+SSG非常流行，因为有很多种好的方法能够免费去建立网站：
+- Github pages
+- Gitlab pages
+- Netlify
+- Surge
+- Now static
+
+##### Hexo
+在2016，利用node.js构建的最流行的SSG就是Hexo。它是一个一站式SSG，与Wordpress这样的CMS系统类似，
+例如可以用来创建博客。它有很多特性包括国际化的插件。
+
+##### Gatsby
+新的入局者Gatsby是一个非常有趣的解决方案，它与它的竞争者不同，因为它利用React生态系统来生成静态html文件。
+你可以选择与React组件、markdown文件以及服务端渲染整合，这使得它非常强大。
+
+### 结论
 
 
 
