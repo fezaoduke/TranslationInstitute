@@ -61,13 +61,13 @@
 
 执行上下文是ECMAScript标准中定义的一个抽象概念，用来记录代码运行的环境。它可以是代码最开始执行的全局上下文，也可以是执行进入某个函数体内的上下文。
 
-图片。。。。。。。。。。。。
+![执行上下文分析](http://img.blog.csdn.net/20170228211825957?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvZmVuNzQ3MDQyNzk2/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
 
 需要注意的是，程序至始至终只能进入某一个执行上下文。这也是为什么说JavaScript是单线程的原因，即每次只能有一个命令在执行。通常，浏览器用“栈”来维护执行上下文。“栈”遵循“后入先出（Last In First Out）”的原则，也就是说最后进栈的最先出栈（因为我们只能操作栈顶）。当前起作用的执行上下文位于栈顶，当它内部的代码执行完毕之后出栈 ，然后将下一个元素作为当前的上下文。
 
 另外，程序并不需要执行完当前的执行上下文中的所有代码，才能进入另一个执行上下文。经常会有当前的上下文A执行到一半暂停，又进行了另一个上下文B的情况。当程序在上下文B中彻底结束之后，又回到上下文A中，从它暂停的地方重新继续执行。每次一个上下文被另外一个上下文所替代时，这个新的上下文就入栈成为栈顶，即当前的上下文。
 
-图片。。。。。。。。
+![执行上下文栈](http://img.blog.csdn.net/20170228211942746?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvZmVuNzQ3MDQyNzk2/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
 
 举个比较实际的例子。
 
@@ -91,11 +91,11 @@
 	/* moar函数实际上是foo函数执行之后返回的bar函数。bar函数中调用boop，此时bar函数执行暂停，boop函数进入了执行，而boop对应的执行上下文就成了执行上下文栈中的栈顶。  */
 	moar(15); 
 
-图片。。。。。。。。。。
+![这里写图片描述](http://img.blog.csdn.net/20170228212042794?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvZmVuNzQ3MDQyNzk2/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
 
 当boop函数执行完毕，boop函数的执行上下文出栈，bar函数又继续执行。
 
-图片。。。。。。。。。
+![这里写图片描述](http://img.blog.csdn.net/20170228212059857?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvZmVuNzQ3MDQyNzk2/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
 
 当有一堆执行上下文，一个接着一个地运行，有些执行到一半暂停后来又继续，这里需要回来继续执行的时候能记住当前的状态。事实上，ECMAScript中已经做出了规定，每个执行上下文都有用来追踪执行过程的各种状态组件。它们包括以下几个：
 
@@ -121,8 +121,7 @@ Note： 严格上来说，环境变量和词法变量都与闭包的实现有关
 
 + 词法嵌套结构：内部环境引用包含它的外部环境，外部环境还可以有自己的外部环境。因此，一个环境可以作为多个内部环境的外部环境。全局环境是唯一一个没有外部环境的环境。说起来有点绕，我们用洋葱来做个比喻：全局环境是洋葱最外面的一层，每一层都嵌套在里面，一层又一层，就像我们的词法环境。
 
-
-洋葱图片。。。。。。。。。。。。。。。。。
+![这里写图片描述](http://img.blog.csdn.net/20170228212124451?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvZmVuNzQ3MDQyNzk2/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
 
 我们用伪代码来抽象一下：
 
@@ -157,7 +156,7 @@ Note： 严格上来说，环境变量和词法变量都与闭包的实现有关
 
 如上所示，bar函数嵌套在foo函数中。我们用下面这张图来更直观地感受函数的嵌套关系。
 
-函数嵌套 图片。。。。。。。。。。。。。。。。
+![这里写图片描述](http://img.blog.csdn.net/20170228212152646?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvZmVuNzQ3MDQyNzk2/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
 
 等下我们还会回到这个例子。
 
