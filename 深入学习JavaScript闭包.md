@@ -144,7 +144,7 @@ Note： 严格上来说，环境变量和词法变量都与闭包的实现有关
 
 我们来看嵌套结构的例子。
 
-  var x = 10;
+  	var x = 10;
 	
 	function foo() {
 	  var y = 20; // free variable
@@ -164,3 +164,358 @@ Note： 严格上来说，环境变量和词法变量都与闭包的实现有关
 这个作用域链，或者说函数的环境链，在函数创建的时候就保存起来了。也就是说，它是由源代码的位置静态定义的，（这就是我们熟悉的词法作用域Lexical Scope）
 
 我们先快速地了解一下，“动态作用域”（Dynamic Scope）与“静态作用域”（Static Scope）的区别，我们就能知道为什么静态作用域是产生闭包的一个必要条件了。
+
+## 题外话：动态作用域 vs. 静态作用域
+
+动态作用域的实现是基于栈结构，局部变量和函数参数都是存在栈里。因此，变量的具体值是由运行时当前的栈顶的执行上下文决定的。而静态作用域是指变量在创建的时候就决定了它的值，也就是说，源代码的位置决定了变量的值。你可能对二者的区别还是有点模糊，我们来看两个例子帮助我们理解。
+
+### Example 1： 
+
+	var x = 10;
+	
+	function foo() {
+	  var y = x + 5;
+	  return y;
+	}
+	 
+	function bar() {
+	  var x = 2;
+	  return foo();
+	}
+	 
+	function main() {
+	  foo(); // 静态作用域: 15; 动态作用域: 15
+	  bar(); // 静态作用域: 15; 动态作用域: 7
+	  return 0;
+	}
+
+上例中，`bar`函数本质上就是执行`foo`函数，如果是静态作用域的话，`bar`函数中的`x`是在foo函数创建的时候就确定了，也就是说`x`一直为10，两次输出应该是相同的。而动态作用域则根据运行时的x值而返回不同的结果。当执行`bar`函数时，`x`的值变成了2，那么`foo`函数执行后的结果就是7。（你猜实际上输出是什么呢？）
+
+### Example 2： 
+
+	var myVar = 100;
+	 
+	function foo() {
+	  console.log(myVar);
+	}
+	 
+	foo(); //静态作用域: 100; 动态作用域: 100
+	 
+	(function () {
+	  var myVar = 50;
+	  foo(); // 静态作用域: 100; 动态作用域: 50
+	})();
+	
+	// 高级函数
+	(function (arg) {
+	  var myVar = 1500;
+	  arg();  // 静态作用域: 100; 动态作用域: 1500
+	})(foo);
+
+类似地，上例中`foo`函数的`myVar`变量在代码创建后，就已经确认了。也就是说，静态作用域使得程序在两个立即执行函数创建的时候将`myVar`变量分配好了。
+
+动态作用域经常会带来不确定性，它不能确定变量的值到底是来自哪个作用域的。
+
+## 闭包
+
+上面讲了那么多，看起来有点离题，但其实是覆盖了理解闭包所需的全部知识点。
+
+> 每个函数都有一个执行上下文，它包含了一个指定函数内变量赋值以及对外部环境的引用的词法环境。对外部环境的引用使得所有的内部函数能访问到外部作用域的所有变量，无论这些内部函数是在它创建时的作用域内调用还是作用域外调用。
+
+看上去函数“记住”了外部环境，但其实上是这个函数有个指向外部环境的引用。
+
+让我们重新回到嵌套结构的例子：
+
+	var x = 10;
+	
+	function foo() {
+	  var y = 20; // 自由变量
+	  function bar() {
+	    var z = 15; //自由变量
+	    return x + y + z;
+	  }
+	  return bar;
+	}
+	
+	var test = foo();
+	
+	test(); // 45
+
+基于我们对环境运行机制的理解，上述例子的环境定义可以抽象为如下（伪代码）：
+
+	GlobalEnvironment = {
+	  EnvironmentRecord: { 
+	    // 内置标识符
+	    Array: '<func>',
+	    Object: '<func>',
+	    // 等等..
+	    
+	    // 自定义标识符
+	    x: 10
+	  },
+	  outer: null
+	};
+	 
+	fooEnvironment = {
+	  EnvironmentRecord: {
+	    y: 20,
+	    bar: '<func>'
+	  }
+	  outer: GlobalEnvironment
+	};
+	
+	barEnvironment = {
+	  EnvironmentRecord: {
+	    z: 15
+	  }
+	  outer: fooEnvironment
+	};
+
+当我们执行`test`函数时，我们会得到45。因为`test`函数执行了`foo`函数，而`foo`函数返回了`bar`函数。而`bar`函数即使在`foo`函数返回之后，仍然能访问到自由变量`y`，因为它有指向外部环境（也就是`foo`函数所在的环境）的引用。同理，`bar`函数也能访问到全局变量`x`，因为`foo`函数所在的环境能访问全局环境。这就是所谓的“作用域链查找”。
+
+回到我们刚才讨论的动态作用域和静态作用域所论述的那点，为了实现闭包，我们不能用动态作用域的动态堆栈来存储变量。如果是这样，当函数返回时，变量就必须出栈，而不再存在，这与最初闭包的定义是矛盾的。事实上，外部环境的闭包数据被存在了“堆”中，这样才使得即使函数返回之后内部的变量仍然一直存在（即使它的执行上下文也已经出栈）。
+
+好，现在我们已经从抽象意义上明白闭包的原理。我们再来看一下例子。
+
+### Example 1： 
+
+一个典型的错误是在for循环中有个函数，并且这个函数又用到计数变量。
+
+	var result = [];
+	 
+	for (var i = 0; i < 5; i++) {
+	  result[i] = function () {
+	    console.log(i);
+	  };
+	}
+	
+	result[0](); // 5, 期待输出 0
+	result[1](); // 5, 期待输出1
+	result[2](); // 5, 期待输出2
+	result[3](); // 5, 期待输出3
+	result[4](); // 5, 期待输出4
+
+根据我们刚才所学的，很容易发现这个例子中的错误吧。对环境进行抽象分析，当for循环结束之后，环境是这样的：
+```
+environment: {
+  EnvironmentRecord: {
+    result: [...],
+    i: 5
+  },
+  outer: null,
+}
+```
+你以为`result`数组的五个函数的作用域是不同的，实际上它们是在同一个作用域下。因此，每次变量`i`增加时，整个作用域下的`i`也是跟着增加的，而这个`i`是被所有的函数共享的。因为for循环之后，`i`变成了5，所以`result`数组的函数执行结果都是5。
+
+解决的方法之一是为每个函数创建一个额外的封闭上下文，这样它们就有了各自的执行上下文。
+
+
+	 
+	Var result = [];
+	for (var i = 0; i < 5; i++) {
+	  result[i] = (function inner(x) {
+	    // 额外的封闭函数
+	    return function() {
+	      console.log(x);
+	    }
+	  })(i);
+	}
+	
+	result[0](); // 0, 期待输出 0
+	result[1](); // 1, 期待输出1
+	result[2](); // 2, 期待输出2
+	result[3](); // 3, 期待输出3
+	result[4](); // 4, 期待输出4
+
+搞定啦！！！
+
+另外一种机智的解决方法是用`let`声明变量，因为`let`能创建一个新的作用域，也就是说for循环的每次迭代中都新创建了一个标识符`i`。
+	
+	var result = [];
+	for (let i = 0; i < 5; i++) {
+	  result[i] = function () {
+	    console.log(i);
+	  };
+	}
+	
+	result[0](); // 0, 期待输出 0
+	result[1](); // 1, 期待输出1
+	result[2](); // 2, 期待输出2
+	result[3](); // 3, 期待输出3
+	result[4](); // 4, 期待输出4
+
+
+### Example 2：
+
+本例可以看到每次函数的调用是如何生成一个新的闭包。
+
+```
+function iCantThinkOfAName(num, obj) { 
+  //array变量和两个函数参数，被嵌套函数doSomething捕获
+  var array = [1, 2, 3];
+  function doSomething(i) {
+    num += i;
+    array.push(num);
+    console.log('num: ' + num);
+    console.log('array: ' + array);
+    console.log('obj.value: ' + obj.value);
+  }
+  
+  return doSomething;
+}
+
+var referenceObject = { value: 10 };
+var foo = iCantThinkOfAName(2, referenceObject); // 闭包 #1
+var bar = iCantThinkOfAName(6, referenceObject); // 闭包 #2
+
+foo(2); 
+/*
+  num: 4
+  array: 1,2,3,4
+  obj.value: 10
+*/
+
+bar(2); 
+/*
+  num: 8
+  array: 1,2,3,8
+  obj.value: 10
+*/
+
+referenceObject.value++;
+
+foo(4);
+/*
+  num: 8
+  array: 1,2,3,4,8
+  obj.value: 11
+*/
+
+bar(4); 
+/*
+  num: 12
+  array: 1,2,3,8,12
+  obj.value: 11
+*/
+```
+
+函数`iCantThinkOfAName`每次调用都生成了一个新的闭包，也就是函数`foo`和函数`bar`。随后闭包函数的调用更新了闭包内的变量，这也证明了即使当函数`iCantThinkOfAName`返回之后，函数`iCantThinkOfAName`中的函数`doSomething`还是能访问闭包内的变量`array`，`obj`
+和`num`。
+
+### Example 3：
+
+```
+function mysteriousCalculator(a, b) {
+	var mysteriousVariable = 3;
+	return {
+		add: function() {
+			var result = a + b + mysteriousVariable;
+			return toFixedTwoPlaces(result);
+		},
+		
+		subtract: function() {
+			var result = a - b - mysteriousVariable;
+			return toFixedTwoPlaces(result);
+		}
+	}
+}
+
+function toFixedTwoPlaces(value) {
+	return value.toFixed(2);
+}
+
+var myCalculator = mysteriousCalculator(10.01, 2.01);
+myCalculator.add() // 15.02
+myCalculator.subtract() // 5.00
+```
+
+我们可以看到函数`mysteriousCalculator `在全局作用域下，它返回两个函数。本例中的环境抽象出来是这样的：
+```
+GlobalEnvironment = {
+  EnvironmentRecord: { 
+    // 内置标识符
+    Array: '<func>',
+    Object: '<func>',
+    // 等等...
+
+    //自定义标识符
+    mysteriousCalculator: '<func>',
+    toFixedTwoPlaces: '<func>',
+  },
+  outer: null,
+};
+ 
+mysteriousCalculatorEnvironment = {
+  EnvironmentRecord: {
+    a: 10.01,
+    b: 2.01,  
+    mysteriousVariable: 3,
+  }
+  outer: GlobalEnvironment,
+};
+
+addEnvironment = {
+  EnvironmentRecord: {
+    result: 15.02
+  }
+  outer: mysteriousCalculatorEnvironment,
+};
+
+subtractEnvironment = {
+  EnvironmentRecord: {
+    result: 5.00
+  }
+  outer: mysteriousCalculatorEnvironment,
+};
+```
+由于函数`add`和`subtract`有一个指向外部函数环境`mysteriousCalculator `的引用，它们能访问到该环境中的变量`mysteriousVariable `，并且得出最后的计算结果。
+
+### Example 4：
+
+最后一个例子，我们用来展示闭包的一个重要作用：在外部作用域下维护一个私有变量。
+
+	function secretPassword() {
+	  var password = 'xh38sk';
+	  return {
+	    guessPassword: function(guess) {
+	      if (guess === password) {
+	        return true;
+	      } else {
+	        return false;
+	      }
+	    }
+	  }
+	}
+	
+	var passwordGame = secretPassword();
+	passwordGame.guessPassword('heyisthisit?'); // false
+	passwordGame.guessPassword('xh38sk'); // true
+
+这个作用非常强大。它让变量`password`成了闭包函数`guessPassword `的私有变量，只能被函数`guessPassword `访问，而不能被所有的外部函数访问。
+
+## 总结
+
++ 执行上下文是ECMAScript标准中定义的一个抽象概念，用来记录代码运行的环境。程序至始至终只能进入一个执行上下文。
++ 每个执行上下文都有一个词法环境，它包含了标识符的赋值以及指向外部环境的引用。
++ 每个环境能访问到的标识符集合，我们称之为“作用域”。我们将作用域一层一层嵌套，形成了“作用域链”。
++ 每个函数都有一个执行上下文，它包含了一个指定函数内变量赋值以及对外部环境的引用的词法环境。看上去函数“记住”了外部环境，但其实上是这个函数有个指向外部环境的引用。这就是“闭包”的概念。
++ 每当外部封闭函数执行的时候就产生了闭包，也就是说闭包的创建并不一定需要内部函数返回。
+
++ JavaScript中闭包作用域是词法作用域，即它在代码写好之后就被静态决定了它的作用域。
+
++ 闭包有很多实际用处。其中一个重要的用处就是在外部作用域下维护一个私有变量。
+
+## 结束语
+
+希望本文能对你有帮助，现在你能完全理解JavaScript中的闭包是如何实现了吗？彻彻底底地掌握闭包的工作原理之后，你能更容易发现闭包的存在，更不用说在debug的时候省了不少力。
+
+P.S. 若有不当之处，欢迎指正。
+
+### 延伸阅读
+
+简洁起见，我省去了一些可能读者朋友感兴趣的话题，链接如下：
+
++ 执行上下文中的变量环境具体是指什么？Dr. Axel Rauschmayer做了很好的解释，请戳[这里](http://www.2ality.com/2011/04/ecmascript-5-spec-lexicalenvironment.html)
++ 环境记录中有哪些不同的类型？请看[这里](http://www.ecma-international.org/ecma-262/6.0/#sec-environment-records)
++ MDN上关于[闭包]( https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures)的定义
+
