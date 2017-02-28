@@ -121,7 +121,7 @@ Note： 严格上来说，环境变量和词法变量都与闭包的实现有关
 
 + 词法嵌套结构：内部环境引用包含它的外部环境，外部环境还可以有自己的外部环境。因此，一个环境可以作为多个内部环境的外部环境。全局环境是唯一一个没有外部环境的环境。说起来有点绕，我们用洋葱来做个比喻：全局环境是洋葱最外面的一层，每一层都嵌套在里面，一层又一层，就像我们的词法环境。
 
-![这里写图片描述](http://img.blog.csdn.net/20170228212124451?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvZmVuNzQ3MDQyNzk2/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
+![这里写图片描述](http://img.blog.csdn.net/20170228212923197?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvZmVuNzQ3MDQyNzk2/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
 
 我们用伪代码来抽象一下：
 
