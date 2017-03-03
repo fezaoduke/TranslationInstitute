@@ -1,8 +1,8 @@
 关于本文：
 
-[原文地址]( https://medium.freecodecamp.com/lets-learn-javascript-closures-66feb44f6a44?gi=e0c9ec232139#.23peoxdhn)  [翻译地址](**********)   译者：野草 
+[原文地址]( https://medium.freecodecamp.com/lets-learn-javascript-closures-66feb44f6a44?gi=e0c9ec232139#.23peoxdhn)  [翻译地址](https://github.com/fezaoduke/TranslationInstitute/edit/master/%E6%B7%B1%E5%85%A5%E5%AD%A6%E4%B9%A0JavaScript%E9%97%AD%E5%8C%85.md)   译者：野草 
 
-本文发表于前端早读课[【第8****期】](***********)
+本文发表于前端早读课[【第863期】](http://mp.weixin.qq.com/s?__biz=MjM5MTA1MjAxMQ==&mid=2651226038&idx=1&sn=636aa6089bb12c9431262129c42ea958&chksm=bd49a6328a3e2f24a872fad076cf22ed39a2f11a64864659eaacede0714025724e97af32e789&mpshare=1&scene=1&srcid=0303IevkR8NiPmcgvN69bLsq#rd)
 
 
 闭包（closure）是JavaScript中最基本的概念，也是每个前端工程师都应该彻底掌握的概念。网上有很多教程，通俗易懂地解释了闭包的概念，却鲜有深入探讨闭包背后的机制和原理。
