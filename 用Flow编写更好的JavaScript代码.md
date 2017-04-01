@@ -2,7 +2,7 @@
 
 关于本文：
 
-[原文地址](https://www.sitepoint.com/writing-better-javascript-with-flow/)   [翻译地址](https://github.com/fezaoduke/TranslationInstitute/blob/master/%E7%94%A8Flow%E7%BC%96%E5%86%99%E6%9B%B4%E5%A5%BD%E7%9A%84JavaScript.md) 译者：野草
+[原文地址](https://www.sitepoint.com/writing-better-javascript-with-flow/)   [翻译地址](https://github.com/fezaoduke/TranslationInstitute/blob/master/%E7%94%A8Flow%E7%BC%96%E5%86%99%E6%9B%B4%E5%A5%BD%E7%9A%84JavaScript%E4%BB%A3%E7%A0%81.md) 译者：野草
 
 本文发表于前端早读课[【第8**期】]()
 
