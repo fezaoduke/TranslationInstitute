@@ -4,7 +4,7 @@
 
 [原文地址](https://www.sitepoint.com/writing-better-javascript-with-flow/)   [翻译地址](https://github.com/fezaoduke/TranslationInstitute/blob/master/%E7%94%A8Flow%E7%BC%96%E5%86%99%E6%9B%B4%E5%A5%BD%E7%9A%84JavaScript%E4%BB%A3%E7%A0%81.md) 译者：野草
 
-本文发表于前端早读课[【第8**期】]()
+本文发表于前端早读课[【第897期】](http://mp.weixin.qq.com/s?__biz=MjM5MTA1MjAxMQ==&mid=2651226319&idx=1&sn=122a077dfc7ab2d0313718e00b7b77ab&chksm=bd49594b8a3ed05d35d804e4a516a1c2ed581dea1f218c2fd1f47457bcd965282be893117585&mpshare=1&scene=1&srcid=0406GCVS6U9OALP0A7yEcHSb#rd)
 
 你是否经常在debug那些简单可避免的bug？可能你给函数传参的时候搞错了参数的顺序，或者本来应该传个Number类型的参数，你传了一个String类型？JavaScript的弱类型是这一类bug的罪魁祸首，静态类型语言中不存在此类bug。
 
