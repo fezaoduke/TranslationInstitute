@@ -51,7 +51,7 @@
 **entry.js**
 
     import moment from 'moment';
-    Object.definePrototype(Vue.prototype, '$moment', { value: moment });
+    Object.defineProperty(Vue.prototype, '$moment', { value: moment });
     
 由于所有的组件都会继承`Vue`原型对象上的方法，因此这些方法在任何组件文件中都能通过`this.$moment`访问到：
 
