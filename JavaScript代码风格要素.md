@@ -22,7 +22,7 @@
 1. 一个函数只做一件事，让函数成为代码组合的最小单元。
 2. 删除不必要的代码。
 3. 使用主动语态。
-4. 避免结构松散的，不知所云的代码。
+4. 避免一连串结构松散的，不知所云的代码。
 5. 将功能相连的代码写在一起。（keep related code together）
 6. 通过判断true值的方式来编写代码以及语句。（这句有点超前，是自己通读全文之后的理解 put statements and expressions in positive form）
 7. 不同的需求通过不同的代码来实现。（use parallel construction on parallel concepts）
@@ -36,5 +36,17 @@
 JavaScript中，存在三种函数：
 - 通信函数：函数用来执行I/O。
 - 程序性函数：对一系列的声明列表进行分组。（a list of instructions,grouped together.）
-- 
+- 映射性函数：给定一些输入，返回对应的输出。
+
+在所有有效的应用程序都需要I/O，并且很多程序都遵循一定的程序执行顺序（procedural sequences）这种情况下，你的大部分函数应该是映射性函数：给定一些输入，该函数将返回一些相应的输出。
+
+**每个函数只做一件事情**：如果你的函数主要用于I/O，请勿将I/O与映射（计算）混用。如果你的函数主要用于映射，请勿将其与I/O混用。根据定义，程序性函数违反了这一指导准则。程序性函数也违反了另一个指导准则：避免一连串结构松散，不知所云的代码。
+
+理想中的函数是一个简单的、明确的纯函数：
+- 同样的输入，总是返回相同的输出。
+- 无副作用。
+
+也可以查看，[“什么是纯函数？”](https://medium.com/javascript-scene/master-the-javascript-interview-what-is-a-pure-function-d1c076bec976)
+
+### 2. 删除不必要的代码
 
