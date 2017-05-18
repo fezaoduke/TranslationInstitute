@@ -116,3 +116,28 @@ inc(3); // 4
 让我们来看另一个使用函数组合的例子。函数组合是将一个函数应用于另一函数运行结果的过程。 无论你是否意识到，你一直使用函数组合。 例如，当你链式调用如`.map()`或`promise.then()`时，你就是在使用它。大多数情况下，它看起来像这样：f(g(x))。
 
 当你运用两个函数组合时，你无须创建一个变量来保存两个函数运行时的中间值。我们来看看函数组合是怎么减少代码的：
+
+```
+const g = n => n + 1;
+const f = n => n * 2;
+// With points:
+const incThenDoublePoints = n => {
+  const incremented = g(n);
+  return f(incremented);
+};
+incThenDoublePoints(20); // 42
+// compose2 - Take two functions and return their composition
+const compose2 = (f, g) => x => f(g(x));
+// Point-free:
+const incThenDoublePointFree = compose2(f, g);
+incThenDoublePointFree(20); // 42
+```
+你可以利用函子（functor）来做同样的事情。函子指的是你可以使用map来处理的事物。让我们利用函数组合的map链来写另一个版本的`compose2`：
+```
+const compose2 = (f, g) => x => [x].map(g).map(f).pop();
+const incThenDoublePointFree = compose2(f, g);
+incThenDoublePointFree(20); // 42
+```
+
+当你每次使用promise链式写法的时候，你就是在做同样的事情。
+
