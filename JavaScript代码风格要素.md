@@ -190,3 +190,25 @@ pipe(g, f)(20); // 42
 在第二种方式中，看起来我们正在尝试去触发一个事件，而不是对其作出回应。
 
 #### 生命周期函数
+
+对于组件生命周期方法（组件更新之前调用的方法），考虑一下以下的不同的命名：
+- `componentWillBeUpdated(doSomething)`
+- `componentWillUpdate(doSomething)`
+- `beforeUpdate(doSomething)`
+
+第一个示例中，我们使用了被动语态（将要被更新而不是将要更新）。这种方式很口语化，也没有更加比其它两种方式更清晰。
+
+第二种方式好多了，但生命周期函数的重点在于触发处理事件。`componentWillUpdate(handler)`读起来就好像它将会更新一个处理时间，但这不是我们想要表达的。我们想说，“在组件更新之前，触发事件”。`beforeComponentUpdate()`能更清楚的表达这一想法。
+
+
+更细致一点。因为这些方法所作用的对象（组件）都是内置的。在方法名中引用这些对象是多余的。想一想如果你直接调用这些方法时如何阅读：`component.componentWillUpdate()`。这就好像在说，“吉米吉米会在晚餐吃牛排。”你没有必要听到这些对象的名字两次。
+- `component.beforeUpdate(doSomething)`由于`component.beforeComponentUpdate(doSomething)`
+
+**函数混合**是指将方法作为属性或者函数添加到一个对象上面。方法将在同一个流中被依次调用-如同装配线。每一个函数混合将`instance`作为入参，并在其调用流中的下一个方法之前，将一些东西加在它上面。
+
+我喜欢用形容词来命名函数混合。你也可以经常使用"ing"或者"able"后缀来找到有意义的形容词。例如：
+- `const duck = composeMixins(flying, quacking);`
+- `const box = composeMixins(iterable, mappable);`
+
+
+
