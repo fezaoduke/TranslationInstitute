@@ -165,3 +165,28 @@ pipe(g, f)(20); // 42
 记住：
 - 如果能用更少的代码表达同样的意思，并且不会改变或者模糊化其所表达的含义，你应该采用这种方法。
 -如果能用更少的变量表达相同的意思，并且不会改变或者模糊化其所表达的含义，你应该采用这种方法。
+
+### 3. 使用主动语态
+
+多直接命名事物。
+- `myFunction.wasCalled()`优于`myFunction.hasBeenCalled()`
+- `createUser`优于`User.create()`
+- `notify()`优于`Notifier.doNotification()`
+
+如果返回值为布尔值，命名中最好直接反应其取值:（Name predicts and booleans as if they are yes or no questions）
+- `isActive(user)`优于`getActiveStatus(user)`
+- `isFirstRun = false;`优于`firstRun = false;`
+
+函数命名采用动词形式：
+- `increment()`优于`plusOne()`
+- `unzip()`优于`filesFromZip()`
+- `filter(fn, array)`优于`matchingItemsFromArray(fn, array)`
+
+#### 事件触发
+事件触发以及生命周期函数由于被用作限定符，就不适用动词形式这一规则；相比于表达用来做什么，它们主要用来表示什么时候做。就如同它们被读的方式，“<什么时候去做>，<动作>”，这样命名。
+- `element.onClick(handleClick)`由于`element.click(handleClick)`
+- `element.onDragStart(handleDragStart)`优于`component.startDrag(handleDragStart)`
+
+在第二种方式中，看起来我们正在尝试去触发一个事件，而不是对其作出回应。
+
+#### 生命周期函数
