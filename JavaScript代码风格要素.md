@@ -210,5 +210,31 @@ pipe(g, f)(20); // 42
 - `const duck = composeMixins(flying, quacking);`
 - `const box = composeMixins(iterable, mappable);`
 
+### 4.避免一连串结构松散的，不知所云的代码
+开发人员经常将一系列事件串联在一个进程中：一组松散的、相关度不高的语句被设计依次运行。过多的程序代码是形成“意大利面条”代码的原因。
 
+这种程序序列经常通过相同的形式重复调用，每一个单独看起来都是巧妙的，有时意外地报错。例如，用户界面组件与几乎所有其他的用户界面组件共享相同的核心需求。 其关注点可以分解成生命周期阶段，并由单独的函数方法进行管理。
+
+考虑一下的运行序列：
+```
+const drawUserProfile = ({ userId }) => {
+  const userData = loadUserData(userId);
+  const dataToDisplay = calculateDisplayData(userData);
+  renderProfileData(dataToDisplay);
+};
+```
+
+这个方法处理了三件不同的事：获取数据，根据获取的数据计算view的状态，以及渲染。
+
+在大部分现代前端应用架构，这些关注点中的每一个都应该考虑分拆开。通过分拆这些关注点，我们可以轻松地为每个问题提供不同的函数。
+
+例如，我们可以完全替换渲染器，它不会影响程序的其他部分，例如，React的丰富的自定义渲染器：适用于原生iOS和Android应用程序的ReactNative，WebVR的AFrame，用于服务器端渲染的ReactDOM/Server 等等...
+
+此方法的另一个问题就是你不能在没有先加载数据的情况下，简单地计算要展示的数据并生成标签。如果你已经加载了数据怎么办？你可以结束没有必要继续做下去的工作。（What if you’ve already loaded the data? You end up doing work that you didn’t need to do in subsequent calls.）
+
+分拆关注点也使得它们更容易进行测试。我喜欢对我的应用程序进行单元测试，并在写代码时展示每次代码改变之后的测试结果。但是，如果我们将渲染代码绑定到数据加载代码，我不能简单地将一些假数据传递给渲染代码进行测试。我必须从端到端测试整个组件-这个过程，由于浏览器加载，异步I/O请求等等会耗费时间。
+
+我不能从我的单元测试中得到即时反馈。分拆功能点允许你进行单独的单元测试。
+
+上述示例已经分拆出单独的功能点，我们可以在应用程序中提供不同的生命周期钩子给其调用。 当应用程序开始装载组件时，可以触发数据加载。可以根据响应视图状态更新来触发计算和渲染。
 
