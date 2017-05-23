@@ -274,3 +274,40 @@ const drawUserProfile = ({ userId }) => {
 
 > 共享相关的功能特性文件（colocate files related by feature）
 
+### 6.通过判断true值的方式来编写代码以及语句
+- `isFlying`优于`isNotFlying`
+- `late`优于`notOneTime`
+
+#### if语句
+```
+if (err) return reject(err);
+
+// do something
+```
+优于
+```
+if (!err) {
+  // ... do something
+} else {
+  return reject(err);
+}
+```
+
+#### 三元判断语句
+```
+{
+  [Symbol.iterator]: iterator ? iterator : defaultIterator
+}
+```
+优于
+```
+{
+  [Symbol.iterator]: (!iterator) ? defaultIterator : iterator 
+}
+```
+
+#### 尽量采用强烈的负面含义的命名
+有时候我们只关心一个变量是否缺失，因此如果使用是一个true值的名字，那么我们将不得不利用`!`操作符来否定它。这些情况下，尽量采用强烈的负面含义的命名。`not`以及`!`操作符会创建弱的表达式。
+- `if (missingValue)`优于`if (!hasValue)`
+- `if (anonymous)`优于`if (!user)`
+- `if (!isEmpty(thing))`优于`if (notDefined(thing))`
