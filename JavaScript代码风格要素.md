@@ -311,3 +311,47 @@ if (!err) {
 - `if (missingValue)`优于`if (!hasValue)`
 - `if (anonymous)`优于`if (!user)`
 - `if (!isEmpty(thing))`优于`if (notDefined(thing))`
+
+#### 函数调用时，避免用null以及undefined代替某一个参数
+不要在函数调用时，传入`undefined`或者`null`作为某个参数的值。更推荐传入一个对象：
+```
+const createEvent = ({
+  title = 'Untitled',
+  timeStamp = Date.now(),
+  description = ''
+}) => ({ title, description, timeStamp });
+// later...
+const birthdayParty = createEvent({
+  title: 'Birthday Party',
+  description: 'Best party ever!'
+});
+```
+优于
+```
+const createEvent = (
+  title = 'Untitled',
+  timeStamp = Date.now(),
+  description = ''
+) => ({ title, description, timeStamp });
+// later...
+const birthdayParty = createEvent(
+  'Birthday Party',
+  undefined, // This was avoidable
+  'Best party ever!'  
+);
+```
+#### 针对不同的技术选型，编写不同的代码
+
+迄今为止，应用程序中未解决的问题很少。最终，我们都会一次又一次地做着同样的事情。当这样的场景发生时，意味着代码重构的机会来啦。分辨出类似的部分，然后抽取出能够支持每个不同部分的公共方法。这正是类库以及框架为我们做的事情。
+
+UI组件就是一个很好的例子。在过去的十年间，使用jQuery处理业务逻辑以及网络I/O请求并实现UI更新是很常见的做法。渐渐地，人们开始意识到我们可以将MVC应用到客户端的网页上面，随后，人们开始将model与UI更新逻辑分拆。
+
+最终，web应用广泛采用组件模型这一方式，这使得我们可以使用JSX或HTML模板来声明式的对组件进行建模。
+
+最终，对于每个组件我们都以相同的方式实现UI更新逻辑，而不是每个组件采用不同的代码实现。
+
+对于数组组件的人，很容易看懂每个组件的原理：利用标签来表示UI元素，事件处理器用来触发行为，以及用于添加回调的生命周期钩子函数，这些钩子函数将在必要时运行。
+
+当我们对于类似的问题采用类似的模式解决时，只要熟悉这个解决模式的人很快就能理解代码是用来做什么的。
+
+### 结论：代码应该简洁化而不是简单化
