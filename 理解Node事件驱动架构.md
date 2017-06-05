@@ -9,13 +9,13 @@ Node中的绝大多数对象，比如HTTP请求，响应，流，都是实现了
 ![](https://cdn-images-1.medium.com/max/2000/1*74K5OhiYt7WTR0WuVGeNLQ.png
 )
 
-能体现事件驱动机制本质的最简单形式就是函数的回调，比如Node中常用的`fs.readFile`。在这个例子中，事件仅触发一次（当Node完成文件的读取操作后），回调函数也就充当了事件处理者的身份。
+能体现事件驱动本质的最简单形式就是函数的回调，比如Node中常用的`fs.readFile`。在这个例子中，事件仅触发一次（当Node完成文件的读取操作后），回调函数也就充当了事件处理者的身份。
 
 让我们更深入地探究一下回调形式。
 
 ## Node的回调 
 
-Node处理异步事件最开始使用的是回调。很久之后（也就是现在），原生JavaScript有了Promise对象和async／await特性来处理异步。
+Node处理异步事件最开始使用的是回调。很久之后（也就是现在），原生JavaScript有了Promise对象和async/await特性来处理异步。
 
 回调函数其实就是作为函数参数的函数，这个概念的实现得益于JavaScript语言中的函数是第一类对象。
 
